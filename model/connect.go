@@ -4,12 +4,17 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
 )
 
 var con *sql.DB
 
 func Connect() *sql.DB {
-	db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/db")
+	dbConfig := os.Getenv("DATABASE_CONFIG")
+	if dbConfig == "" {
+		dbConfig = "user:password@tcp(localhost:3306)/db"
+	}
+	db, err := sql.Open("mysql", dbConfig)
 	if err != nil {
 		log.Fatal(err)
 	}
