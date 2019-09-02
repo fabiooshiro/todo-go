@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql" // mysql
 )
@@ -15,5 +16,6 @@ func main() {
 	db := model.Connect()
 	defer db.Close()
 	fmt.Println("Serving...")
-	log.Fatal(http.ListenAndServe(":3000", mux))
+	port := os.Getenv("PORT")
+	log.Fatal(http.ListenAndServe(":"+port, mux))
 }
