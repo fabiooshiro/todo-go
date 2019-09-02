@@ -9,5 +9,8 @@
 			"revisionTime": "2019-05-10T10:23:35Z"
 		}
 	],
-	"rootPath": "curso/aula-07-mvc"
+	"rootPath": "curso/aula-07-mvc",
+	"heroku": {
+		"goVersion": "go1.12.9"
+	}
 }
